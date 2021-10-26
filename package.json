@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RU3YKat/team-profile-generator.git"
+  },
+  "author": "ru3ykat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RU3YKat/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/RU3YKat/team-profile-generator#readme"
+}
