@@ -16,5 +16,3 @@ test('gets employee role', () => {
 
     expect(employee.getRole()).toBe(role);
 });
-
-// 
