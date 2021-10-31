@@ -1,9 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 // reference https://nodejs.org/api/path.html
-const path = require('path');
-const fileDirectory = path.resolve(__dirname, 'dist');
-const filePath = path.join(fileDirectory, 'index.html');
+// const path = require('path');
+// const fileDirectory = path.resolve(__dirname, 'dist');
+// const filePath = path.join(fileDirectory, 'index.html');
 
 const createHtml = require('./util/page-template');
 
@@ -33,7 +33,7 @@ const questions = [
         message: 'Enter the employee ID number:',
         validate: idNumber => {
             if (isNaN(idNumber)) {
-                console.log('Please enter ID number of employee!');
+                console.log('Please enter ID number of the employee!');
                 return false;
             }
                 return true;                
@@ -47,7 +47,7 @@ const questions = [
             if (emailInput) {
                 return true;
             }
-            console.log('Please enter the email of the team manager!');
+            console.log('Please enter the email of the employee!');
             return false;
         }
     },
@@ -65,7 +65,7 @@ managerQuestion = [
         name: 'office',
         message: 'Enter the office number of the team manager:',
         validate: officeNumber => {
-            if (isNaN(officeNumber)) {
+            if (Number.isNaN(officeNumber)) {
                 console.log('Please enter office number of the team manager!');
                 return false;
             }
@@ -163,24 +163,31 @@ const newEmployee = async (array) => {
             name: 'newEmployee',
             message: 'Add an employee?'
         })
-        .then(async (answers) => {
-            var buildEmployee = answers.newEmployee;
+        .then(async (answer) => {
+            var buildEmployee = answer.newEmployee;
             if (await buildEmployee === true) {
                 addNewEmployee();
             }
             else if (await buildEmployee === false) {
-                if (!fs.existsSync(fileDirectory)) {
-                    fs.mkdir(fileDirectory)
+                // if (!fs.existsSync(fileDirectory)) {
+                //     fs.mkdir(fileDirectory)
+                fs.writeFile('./dist/index.html', createHtml(array), (err) => {
+                    if (err){
+                        return console.log(err);
+                    }
+                    console.log('Your team profile has been successsfully created! Please see index.html file in dist folder.');
+                })
                 }
-            }
-
-            fs.writeFile(filePath, createHtml(array), (err) => {
-                if (err){
-                    return console.log(err);
-                }
-                console.log('Your team profile has been successsfully created! Please see index.html file in dist folder.');
-            })
         })
 };
+
+// const writeFile = () => {
+//     fs.writeFile('./dist/index.html', createHtml(array), (err) => {
+//         if (err){
+//             return console.log(err);
+//         }
+//         console.log('Your team profile has been successsfully created! Please see index.html file in dist folder.');
+//     })
+// }
 
 init();
