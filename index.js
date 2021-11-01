@@ -1,17 +1,12 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-// reference https://nodejs.org/api/path.html
-// const path = require('path');
-// const fileDirectory = path.resolve(__dirname, 'dist');
-// const filePath = path.join(fileDirectory, 'index.html');
-
 const createHtml = require('./util/page-template');
 
-const Manager = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const teamArr = [];
+let teamArr = [];
 
 // questions array for all employees
 const questions = [
@@ -72,7 +67,7 @@ managerQuestion = [
                 return true;  
         }
     }
-]   
+]
 
 engineerQuestion = [
     {
@@ -121,12 +116,12 @@ const addNewEmployee = async () => {
             let github;
             let school;
 
-            if (role === 'Manager') {
+            if (role === 'Intern') {
                 inquirer
-                    .prompt(managerQuestion)
+                    .prompt(internQuestion)
                     .then((answers) => {
-                        officeNumber = answers.office;
-                        let employee = new Manager(name, id, email, officeNumber);
+                        school = answers.school;
+                        let employee = new Intern(name, id, email, school);
                         teamArr.push(employee);
                         newEmployee(teamArr);
                     })
@@ -143,12 +138,12 @@ const addNewEmployee = async () => {
                     });
             }
 
-            else if (role === 'Intern') {
+            else if (role === 'Manager') {
                 inquirer
-                    .prompt(internQuestion)
+                    .prompt(managerQuestion)
                     .then((answers) => {
-                        school = answers.school;
-                        let employee = new Intern(name, id, email, school);
+                        officeNumber = answers.office;
+                        let employee = new Manager(name, id, email, officeNumber);
                         teamArr.push(employee);
                         newEmployee(teamArr);
                     })
@@ -169,9 +164,8 @@ const newEmployee = async (array) => {
                 addNewEmployee();
             }
             else if (await buildEmployee === false) {
-                // if (!fs.existsSync(fileDirectory)) {
-                //     fs.mkdir(fileDirectory)
                 fs.writeFile('./dist/index.html', createHtml(array), (err) => {
+                    console.log(array);
                     if (err){
                         return console.log(err);
                     }
@@ -180,14 +174,5 @@ const newEmployee = async (array) => {
                 }
         })
 };
-
-// const writeFile = () => {
-//     fs.writeFile('./dist/index.html', createHtml(array), (err) => {
-//         if (err){
-//             return console.log(err);
-//         }
-//         console.log('Your team profile has been successsfully created! Please see index.html file in dist folder.');
-//     })
-// }
 
 init();
