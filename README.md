@@ -32,9 +32,9 @@ Find your team profile HTML in the /dist folder.
 
 [](https://img.shields.io/badge/License-MIT-violet.svg)
 
-[walkthrough video on Google Drive](https://drive.google.com/file/d/125Lc-_xqGc_CgL-ArWlgsPdPLXZHpP8R/view?usp=sharing)
+[walkthrough video on Google Drive](https://drive.google.com/file/d/1QBMDOOwvdeWqhMeamqlBs3cUtIAlU_G_/view?usp=drivesdk)
 
-Please download the [complete Walkthrough Video here](images/team-profile-gen_walkthrough.mp4).
+Please download the [complete Walkthrough Video here](images/team-profile_best-walkthrough.mp4).
 
 ![team profile HTML](images/team-profile.png)
 Screenshot of end product team profile HTML.
