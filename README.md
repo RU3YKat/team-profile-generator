@@ -32,14 +32,11 @@ Find your team profile HTML in the /dist folder.
 
 [](https://img.shields.io/badge/License-MIT-violet.svg)
 
-![walkthrough](https://drive.google.com/file/d/125Lc-_xqGc_CgL-ArWlgsPdPLXZHpP8R/view?usp=sharing)
+![walkthrough video on Google Drive](https://drive.google.com/file/d/125Lc-_xqGc_CgL-ArWlgsPdPLXZHpP8R/view?usp=sharing)
 
-As shown in the above gif, users are prompted to answer a series of questions. These responses will be applied to the final, custom README.md. Please download the [complete Walkthrough Video](./walkthrough.mp4) here.
+Please download the [complete Walkthrough Video here](images/team-profile-gen_walkthrough.mp4).
 
-![node.jsCLI](images/Screenshot-node.png)
-Screenshot of user inputting data in CLI.
-
-![team profile HTML](images/Screenshot-READMEfinal.png)
+![team profile HTML](images/team-profile.png)
 Screenshot of end product team profile HTML.
 
 ## License
